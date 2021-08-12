@@ -12,7 +12,12 @@ const initialState: IUserState = <IUserState>{
 export function userReducer(state: IUserState = initialState, action: UserActions): IUserState{
     switch (action.type) {
         case UserActionTypes.USER_LOGIN_SUCCESS: {
-            return Object.assign({}, state, action.payload)
+            let user = action.payload;
+            return Object.assign({}, state, {
+                username: user.username,
+                email: user.email,
+                id: user.id
+            })
         }
 
         default:
