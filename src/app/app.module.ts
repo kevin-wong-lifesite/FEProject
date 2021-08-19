@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from "@ngrx/effects";
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +43,10 @@ import { UserEffects } from './shared/user';
     EffectsModule.forRoot([
       UserEffects
     ]),
-    StoreModule.forRoot(reducers, { metaReducers })
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge:60
+    })
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

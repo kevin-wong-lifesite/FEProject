@@ -28,6 +28,17 @@ export class TokenStorageService {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
 
+  static get accessToken(){
+    return window.sessionStorage.getItem(TOKEN_KEY);
+  }
+  static set accessToken(token) {
+    window.sessionStorage.setItem(TOKEN_KEY, token);
+  }
+
+  static set refreshToken(token) {
+    window.sessionStorage.setItem(REFRESHTOKEN_KEY, token);
+  }
+
   public saveRefreshToken(token: string): void {
     window.sessionStorage.removeItem(REFRESHTOKEN_KEY);
     window.sessionStorage.setItem(REFRESHTOKEN_KEY, token);

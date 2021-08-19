@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { getIsLoggedIn } from '../login/login.selectors';
 import { TokenStorageService } from '../shared/services/token-storage.service';
+import { AppStore } from '../shared/store';
+import { getUserRoles, getUserState } from '../shared/user';
 
 @Component({
   selector: 'app-header-bar',
@@ -12,21 +16,35 @@ export class HeaderBarComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  private subscriptions: any[] = [];
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+
+  constructor(private tokenStorageService: TokenStorageService,
+  private store: Store<AppStore>
+    ) { }
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = user.username;
-    }
+        //listen for login state
+        this.subscriptions.push(
+          this.store.pipe(getIsLoggedIn).subscribe(loggedIn => {
+            this.isLoggedIn = loggedIn;
+          })
+        )
+    
+        //get user roles
+        this.subscriptions.push(
+          this.store.pipe(getUserRoles).subscribe(roles => {
+            this.roles = roles;
+            this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+            this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+          })
+        )
+    
+        this.subscriptions.push(
+          this.store.pipe(getUserState).subscribe(user => {
+            this.username = user.username;
+          })
+        )
   }
 
 

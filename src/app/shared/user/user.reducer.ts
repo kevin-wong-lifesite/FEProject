@@ -6,7 +6,8 @@ export type IUserState = UserModel;
 const initialState: IUserState = <IUserState>{
     username: "",
     email: "",
-    id: null
+    id: null,
+    roles: []
 }
 
 export function userReducer(state: IUserState = initialState, action: UserActions): IUserState{
@@ -16,7 +17,8 @@ export function userReducer(state: IUserState = initialState, action: UserAction
             return Object.assign({}, state, {
                 username: user.username,
                 email: user.email,
-                id: user.id
+                id: user.id,
+                roles: user.roles
             })
         }
 

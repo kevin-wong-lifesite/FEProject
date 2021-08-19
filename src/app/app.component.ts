@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { getIsLoggedIn } from './login/login.selectors';
 import { TokenStorageService } from './shared/services/token-storage.service';
+import { AppStore } from './shared/store';
+import { getUserRoles, getUserState } from './shared/user';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +17,10 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,  private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = user.username;
-    }
   }
 
   logout(): void {
