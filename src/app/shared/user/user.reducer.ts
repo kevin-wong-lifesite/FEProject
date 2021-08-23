@@ -22,6 +22,16 @@ export function userReducer(state: IUserState = initialState, action: UserAction
             })
         }
 
+        case UserActionTypes.USER_UPDATE: {
+            let user = action.payload;
+            return Object.assign({},state, {
+                username: user.username,
+                email: user.email,
+                id: user.id,
+                roles: user.roles
+            })
+        }
+
         default:
             return state;
     }

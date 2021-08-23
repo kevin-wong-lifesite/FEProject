@@ -54,12 +54,15 @@ body {
   }
   
   .image-upload-wrap {
+    width: 100%;
+    height: 550px;
     margin-top: 20px;
     border: 4px dashed #1FB264;
     position: relative;
   }
   
   .image-dropping,
+  
   .image-upload-wrap:hover {
     background-color: #1FB264;
     border: 4px dashed #ffffff;
@@ -72,6 +75,8 @@ body {
   
   .drag-text {
     text-align: center;
+    height: 550px;
+    width: 100%;
   }
   
   .drag-text h3 {

@@ -11,7 +11,7 @@ import {
 import { Store } from "@ngrx/store";
 import { AppStore } from "./shared/store";
 import { getIsLoggedIn } from "./login/login.selectors";
-import { UserService } from "./shared/user";
+import { UpdateUserAction, UserActionTypes, UserService } from "./shared/user";
 
 
 
@@ -42,6 +42,7 @@ export class AuthGuard implements CanActivate {
                     //user is not logged in OR they have refreshed page, get the client session again to reload store
                     return this.userService.getUser().pipe(
                         mergeMap(user=>{
+                            this.store.dispatch(new UpdateUserAction(user))
                             //update user and handle refresh
                             return observableOf(true);
                         }),catchError((error)=>{

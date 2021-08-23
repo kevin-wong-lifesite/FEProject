@@ -23,6 +23,8 @@ import { reducers, metaReducers } from './shared/store';
 import { UserEffects } from './shared/user';
 import { DropZoneDirective } from './shared';
 import { AuthGuard } from './auth.guard';
+import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
+import { ThumnailDirective } from './shared';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { AuthGuard } from './auth.guard';
     BoardUserComponent,
     HeaderBarComponent,
     UploadFileComponent,
-    DropZoneDirective
+    DropZoneDirective,
+    FileSelectDirective,
+    FileDropDirective,
+    ThumnailDirective
   ],
   imports: [
     BrowserModule,
