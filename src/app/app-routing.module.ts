@@ -9,6 +9,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: 'upload', component: UploadFileComponent},
+  { path: 'upload', canActivate: [AuthGuard], component: UploadFileComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

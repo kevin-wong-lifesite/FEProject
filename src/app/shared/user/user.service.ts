@@ -10,6 +10,11 @@ const API_URL = 'http://localhost:6969/api/test/';
 export class UserService {
   constructor(private http: HttpClient) { }
 
+  //get the user with request
+  getUser(): Observable<any> {
+    return this.http.get(API_URL + `user/find`)
+  }
+
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }

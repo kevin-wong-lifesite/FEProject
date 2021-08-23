@@ -39,7 +39,6 @@ export class UserEffects {
     @Effect() loginError$$: Observable<Action> = this.updates$.pipe(
         ofType(UserActionTypes.USER_LOGIN_SUCCESS),
         mergeMap(({ payload }) => {
-            console.log(payload,"succs")
             return observableFrom([])
         }
         )

@@ -21,6 +21,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 import { Store, StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './shared/store';
 import { UserEffects } from './shared/user';
+import { DropZoneDirective } from './shared';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserEffects } from './shared/user';
     BoardModeratorComponent,
     BoardUserComponent,
     HeaderBarComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { UserEffects } from './shared/user';
       maxAge:60
     })
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
