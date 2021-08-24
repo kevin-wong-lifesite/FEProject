@@ -1,5 +1,8 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FileUploader } from 'ng2-file-upload';
+import { AppStore } from '../shared/store';
+import { getUserId } from '../shared/user';
 
 @Component({
   selector: 'app-upload-file',
@@ -9,24 +12,12 @@ import { FileUploader } from 'ng2-file-upload';
 export class UploadFileComponent implements OnInit,OnChanges {
 
   private uploader: FileUploader;
-  
-  constructor() {
+  private userId: number;
+
+  constructor(private store: Store<AppStore>) {
     this.uploader = new FileUploader({
       url: `http://localhost:6969/api/file/user/1`,
-      allowedFileType: ['image'],
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      formatDataFunction: async (item) => {
-        console.log(item,"FDSFDS")
-        return new Promise( (resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      }
+      allowedFileType: ['image']
     })
 
     this.uploader.response.subscribe( res => console.log(res,"SDFDSF") );
@@ -34,18 +25,33 @@ export class UploadFileComponent implements OnInit,OnChanges {
   }
 
   ngOnInit() {
-    console.log(this.uploader)
-    this.uploader.onAfterAddingFile = (file) => { 
-      console.log(this.uploader.queue)
-      console.log(file) };
-
+    this.store.pipe(getUserId).subscribe(id => {
+      this.userId = id;
+    })
   } 
 
   ngOnChanges() {
   }
 
-  public fileOverBase(e:any):void {
+  public fileOverBase(e:any):void {``
     
+  }
+
+  removeFile(file) {
+    this.uploader.removeFromQueue(file);
+  }
+
+  submitFiles(){
+
+    let fileUrl = `http://localhost:6969/api/file/user/${this.userId}`
+    this.uploader.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+    }
+    this.uploader.setOptions({
+      url: fileUrl
+    })
+
+    this.uploader.uploadAll();
   }
 
   onFileDrop(event){

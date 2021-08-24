@@ -19,10 +19,13 @@
      >
       <div class="image-previews" *ngFor="let item of uploader.queue">
         <img src="" thumbnail [image]="item?._file"/>
-        {{ item?.file?.name }}
-        {{ item?.file?.size }}    
+        <span>{{ item?.file?.name }} </span>  
+        <mat-icon class='remove-icon' (click)="removeFile(item)">remove_circle</mat-icon>
+      </div>
+      </div>
+    </div>
 
-      </div>
-      </div>
+    <div class="submission" *ngIf='uploader.queue.length > 0'>
+      <button (click)="submitFiles()">Submit</button>
     </div>
 </div>

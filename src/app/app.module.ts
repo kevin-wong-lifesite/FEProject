@@ -25,6 +25,8 @@ import { DropZoneDirective } from './shared';
 import { AuthGuard } from './auth.guard';
 import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { ThumnailDirective } from './shared';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { ThumnailDirective } from './shared';
     ThumnailDirective
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -54,7 +57,8 @@ import { ThumnailDirective } from './shared';
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge:60
-    })
+    }),
+    NoopAnimationsModule
   ],
   providers: [authInterceptorProviders, AuthGuard],
   bootstrap: [AppComponent]

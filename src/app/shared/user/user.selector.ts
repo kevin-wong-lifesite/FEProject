@@ -10,6 +10,15 @@ export function userRoles(state$: Store<IUserState>) {
     return state$.select(state => state.roles);
 }
 
+export function userId(state$: Store<IUserState>) {
+    return state$.select(state => state.id);
+}
+
+export const getUserId= compose(
+    userId,
+    getUserState
+)
+
 export const getUserRoles = compose(
     userRoles,
     getUserState
