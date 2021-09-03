@@ -16,12 +16,13 @@ export class UploadFileComponent implements OnInit,OnChanges {
 
   constructor(private store: Store<AppStore>) {
     this.uploader = new FileUploader({
-      url: `http://localhost:6969/api/file/user/1`,
       allowedFileType: ['image']
     })
 
-    this.uploader.response.subscribe( res => console.log(res,"SDFDSF") );
 
+    this.uploader.onCompleteAll = () => {
+      this.uploader.clearQueue()
+    }
   }
 
   ngOnInit() {

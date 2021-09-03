@@ -18,7 +18,7 @@ export class ThumnailDirective {
       image.onload = (imageEvent) => {
           // Resize the image
           let canvas = document.createElement('canvas');
-          let maxSize = 70;
+          let maxSize = 200;
           let width = image.width;
           let height = image.height;
           if (width > height) {

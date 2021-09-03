@@ -5,9 +5,14 @@ body {
   
   .file-upload {
     background-color: #ffffff;
-    width: 600px;
+    width: 1300px;
+    float: right;
     margin: 0 auto;
     padding: 20px;
+  }
+
+  .file-name {
+    font-size: .8em
   }
   
   .file-upload-btn {
@@ -54,7 +59,14 @@ body {
   }
   
   .remove-icon {
-    color:red;
+    opacity: 0.0;
+    font-size: 1em;
+  }
+
+  .image-previews:hover .remove-icon {
+    display: inline-block;
+    color:gray;
+    opacity: 1;
   }
 
   .remove-icon:hover {
@@ -72,7 +84,7 @@ body {
   .image-dropping,
 
   .image-upload-wrap:hover {
-    background-color: #1FB264;
+    background-color: #beebd3;
     border: 4px dashed #ffffff;
   }
   

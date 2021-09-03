@@ -1,5 +1,9 @@
 <div class="file-upload">
-    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+  <input type="file" ng2FileSelect [uploader]="uploader" style="display: none"  #fileUploader>
+
+  <button class='upload-button' (click)="fileUploader.click()">
+      Select File
+  </button>
 
     <div class="image-upload-wrap" *ngIf="uploader.queue.length == 0">
       <div class="drag-text"  [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
@@ -18,8 +22,10 @@
       (onFileDrop) = "onFileDrop($event)"
      >
       <div class="image-previews" *ngFor="let item of uploader.queue">
-        <img src="" thumbnail [image]="item?._file"/>
-        <span>{{ item?.file?.name }} </span>  
+        <div class="image-holder">
+          <img src="" thumbnail [image]="item?._file"/>
+        </div>
+        <span class="file-name">{{ item?.file?.name }} </span>  
         <mat-icon class='remove-icon' (click)="removeFile(item)">remove_circle</mat-icon>
       </div>
       </div>

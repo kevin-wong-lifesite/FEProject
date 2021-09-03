@@ -25,6 +25,7 @@ export class UserEffects {
                 mergeMap(user => {
                     TokenStorageService.accessToken = user.accessToken;
                     TokenStorageService.refreshToken = user.refreshToken;
+                    TokenStorageService.userId = user.id;
                     return observableFrom([
                         new LoginSuccessAction(user),
                         new LoginPageSuccessAction()

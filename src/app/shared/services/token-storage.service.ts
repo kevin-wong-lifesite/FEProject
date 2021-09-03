@@ -31,12 +31,21 @@ export class TokenStorageService {
   static get accessToken(){
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
+
+  static get userId(){
+    return window.sessionStorage.getItem(USER_KEY);
+  }
+
   static set accessToken(token) {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
   static set refreshToken(token) {
     window.sessionStorage.setItem(REFRESHTOKEN_KEY, token);
+  }
+
+  static set userId(id) {
+    window.sessionStorage.setItem(USER_KEY, id);
   }
 
   public saveRefreshToken(token: string): void {

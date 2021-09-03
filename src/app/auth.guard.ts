@@ -12,6 +12,7 @@ import { Store } from "@ngrx/store";
 import { AppStore } from "./shared/store";
 import { getIsLoggedIn } from "./login/login.selectors";
 import { UpdateUserAction, UserActionTypes, UserService } from "./shared/user";
+import { LoginPageSuccessAction } from "./login/login.actions";
 
 
 
@@ -43,6 +44,7 @@ export class AuthGuard implements CanActivate {
                     return this.userService.getUser().pipe(
                         mergeMap(user=>{
                             this.store.dispatch(new UpdateUserAction(user))
+                            this.store.dispatch(new LoginPageSuccessAction())
                             //update user and handle refresh
                             return observableOf(true);
                         }),catchError((error)=>{

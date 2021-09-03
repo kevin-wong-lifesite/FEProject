@@ -26,7 +26,9 @@ import { AuthGuard } from './auth.guard';
 import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { ThumnailDirective } from './shared';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material';
+import { MatGridListModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ImageGridComponent } from './shared/components/image-grid/image-grid.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +45,16 @@ import { MatIconModule } from '@angular/material';
     DropZoneDirective,
     FileSelectDirective,
     FileDropDirective,
-    ThumnailDirective
+    ThumnailDirective,
+    ImageGridComponent
   ],
   imports: [
     MatIconModule,
     BrowserModule,
     AppRoutingModule,
+    MatTooltipModule,
+    InfiniteScrollModule,
+    MatGridListModule,
     FormsModule,
     HttpClientModule,
     EffectsModule.forRoot([

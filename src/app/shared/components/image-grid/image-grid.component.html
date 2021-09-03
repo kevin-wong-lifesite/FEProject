@@ -1,0 +1,12 @@
+<div class='img-container'>
+
+    <img class="file-thumbnail"
+        (click) = "thumbnailClick()"
+        [src]="image_blob"
+        [style.height.px]="getHeight()"
+        [style.width.px]="getWitdh()"
+    >
+    <div class='img-options'>
+        <span>WORK</span>
+    </div>
+</div>
