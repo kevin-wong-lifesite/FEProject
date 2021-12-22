@@ -1,0 +1,40 @@
+.dashboard-logged-out {
+    width: 100%;
+    min-height: 100vh;
+    margin-left: -15px;
+    position: fixed;
+    background-size: cover;
+    background-position: center center fixed;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.join-header {
+    display: block;
+    font-size: 56px;
+    color: #fff
+}
+
+.join-desc {
+    display: block;
+    font-size: 23px;
+    color: #fff
+}
+
+.join-now {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+//   width: 250px;
+//   height: 250px;
+//   margin: 0 auto;
+//   padding: 10px;
+}   

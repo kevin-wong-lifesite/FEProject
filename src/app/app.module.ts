@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from "@ngrx/effects";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
@@ -26,9 +26,12 @@ import { AuthGuard } from './auth.guard';
 import { FileDropDirective, FileSelectDirective } from 'ng2-file-upload';
 import { ThumnailDirective } from './shared';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatGridListModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatGridListModule, MatIconModule, MatTooltipModule, MatInputModule,
+MatFormFieldModule ,MatCardModule, MatAutocompleteModule } from '@angular/material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ImageGridComponent } from './shared/components/image-grid/image-grid.component';
+import { PublicImageGridComponent } from './shared';
+import { LoggedOutComponent } from './logged-out/logged-out.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +48,10 @@ import { ImageGridComponent } from './shared/components/image-grid/image-grid.co
     DropZoneDirective,
     FileSelectDirective,
     FileDropDirective,
+    PublicImageGridComponent,
     ThumnailDirective,
-    ImageGridComponent
+    ImageGridComponent,
+    LoggedOutComponent
   ],
   imports: [
     MatIconModule,
@@ -54,7 +59,12 @@ import { ImageGridComponent } from './shared/components/image-grid/image-grid.co
     AppRoutingModule,
     MatTooltipModule,
     InfiniteScrollModule,
+    MatCardModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
     FormsModule,
     HttpClientModule,
     EffectsModule.forRoot([

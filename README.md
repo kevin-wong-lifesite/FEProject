@@ -29,3 +29,12 @@ FROM https://www.bezkoder.com/angular-12-jwt-auth/
 
 BOOTSTRAP 
 https://getbootstrap.com/docs/4.4/getting-started/introduction/
+
+MAT ICONS
+https://jossef.github.io/material-design-icons-iconfont/
+
+SEARCH FIELD LATER
+https://stackoverflow.com/questions/58711245/how-to-build-a-search-bar-using-nodejs-and-sql-as-the-database
+
+
+infitnie scroll https://stackblitz.com/edit/ngx-infinite-scroll?file=src%2Fapp%2Fapp.component.ts

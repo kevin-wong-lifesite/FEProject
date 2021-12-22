@@ -1,0 +1,13 @@
+.img-container {
+    width: 100%;
+}
+
+
+
+.img-container .opt {
+    cursor: pointer;
+    padding: 5px;
+}
+.img-container:hover .img-options {
+    opacity: 1;
+}

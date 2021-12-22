@@ -6,12 +6,12 @@
       [infiniteScrollDisabled]="scrollStop"
       (scrolled)="onScrollDown()"
 >
-<mat-grid-list cols="4" rowHeight="300px" gutterSize="10px">
+<mat-grid-list cols="4" rowHeight="500px" gutterSize="10px">
   <mat-grid-tile
       *ngFor="let tile of fileList"
       [colspan]="1"
       [rowspan]="1">
-      <app-image-grid [fileId]=tile.id [size]=300></app-image-grid>
+      <app-image-grid [fileInfo]=tile [size]=300 (deletedFile)="handleDelete($event)"></app-image-grid>
   </mat-grid-tile>
 </mat-grid-list>
 </div>

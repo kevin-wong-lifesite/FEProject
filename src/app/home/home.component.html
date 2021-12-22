@@ -1,6 +1,23 @@
-<div class="container">
-    <header class="jumbotron">
-      <p>{{ content }}</p>
-    </header>
-  </div>
-  
+<div class="search-results"
+      infinite-scroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      [infiniteScrollDisabled]="scrollStop"
+      (scrolled)="onScrollDown()"
+>
+
+Public Images
+
+<div class=public-grid-holder>
+  <mat-grid-list cols="3" rowHeight="500px" gutterSize="10px">
+    <mat-grid-tile
+        *ngFor="let tile of publicFileList"
+        [colspan]="1"
+        [rowspan]="1">
+            <app-public-image-grid [fileInfo]=tile [size]=300 (deletedFile)="handleDelete($event)"></app-public-image-grid>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+</div>

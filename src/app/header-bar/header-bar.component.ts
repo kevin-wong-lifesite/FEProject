@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { getIsLoggedIn } from '../login/login.selectors';
 import { TokenStorageService } from '../shared/services/token-storage.service';
@@ -15,11 +16,13 @@ export class HeaderBarComponent implements OnInit {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
+  searchControlForm = new FormControl();
+  searchOptions = [];
   username?: string;
   private subscriptions: any[] = [];
 
-
   constructor(private tokenStorageService: TokenStorageService,
+  private userService
   private store: Store<AppStore>
     ) { }
 
@@ -39,6 +42,8 @@ export class HeaderBarComponent implements OnInit {
             this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
           })
         )
+
+        this.onChanges();
     
         this.subscriptions.push(
           this.store.pipe(getUserState).subscribe(user => {
@@ -47,6 +52,12 @@ export class HeaderBarComponent implements OnInit {
         )
   }
 
+  onChanges() {
+    this.searchControlForm.valueChanges.subscribe(search => {
+      //on value change do a lookup to see if user matches
+
+    })
+  }
 
   logout(): void {
     this.tokenStorageService.signOut();

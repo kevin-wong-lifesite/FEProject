@@ -1,23 +1,25 @@
 .img-container {
-    position: relative;
     width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    border-style: solid;
 }
 
-.img-container img {
-    vertical-align: middle;
+.file-name {
+    font-size: 15px;
+    color: black;
 }
 
-.img-container .img-options {
-    bottom: 0;
-    background: rgb(0, 0, 0);/* Fallback color */
-    background: rgba(0, 0, 0, 0.5);/* Black background with opacity */
-    color: #ffffff;
-    width: 100%;
-    padding: 20px;
-    opacity: 0;
-    position: absolute;
+.opt {
+    background-color: transparent ;
+    border: none;
+    color: black;
 }
 
+.img-container .opt {
+    cursor: pointer;
+    padding: 5px;
+}
 .img-container:hover .img-options {
     opacity: 1;
 }

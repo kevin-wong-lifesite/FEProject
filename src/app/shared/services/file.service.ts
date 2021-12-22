@@ -26,4 +26,20 @@ export class FileService {
     }
     return this.http.get(route);
   }
+
+  fetchPublicFiles(limit?,offset?): Observable<any> {
+    let route = FILE_API + `public`;
+    if (limit || offset) {
+      route = route + `?limit=${limit}&offset=${offset}`;
+    }
+    return this.http.get(route);
+  }
+
+  deleteFile(fileId): Observable<any> {
+    return this.http.delete(FILE_API + `${fileId}/user/${TokenStorageService.userId}`)
+  }
+
+  updateFile(fileId, updateObj): Observable<any> {
+    return this.http.put(FILE_API + `${fileId}/user/${TokenStorageService.userId}`, updateObj);
+  }
 }

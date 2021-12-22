@@ -5,16 +5,15 @@ import { map } from 'rxjs/operators';
 import { FileService, TokenStorageService } from '../../services';
 
 @Component({
-  selector: 'app-image-grid',
-  templateUrl: './image-grid.component.html',
-  styleUrls: ['./image-grid.component.scss']
+  selector: 'app-public-image-grid',
+  templateUrl: './public-image-grid.component.html',
+  styleUrls: ['./public-image-grid.component.scss']
 })
-export class ImageGridComponent implements OnInit {
+export class PublicImageGridComponent implements OnInit {
   @Input() isShowTooltip: boolean = false;
   @Input() size: number = 100;
   @Input() width: number;
   @Input() height: number;
-  fileName: string;
   @Output() deletedFile:  EventEmitter<any> = new EventEmitter<any>();
   @Output() onThumbnailClick: EventEmitter<any> = new EventEmitter<any>();
   @Input() fileInfo: any;
@@ -33,12 +32,6 @@ export class ImageGridComponent implements OnInit {
         this.image_blob = this.santizer.bypassSecurityTrustUrl(URL.createObjectURL(image))
       })).subscribe(value => {
       });
-    }
-
-    if (this.fileInfo.name.length > 32) {
-        this.fileName = this.fileInfo.name.slice(0,29).concat("...")
-    } else {
-      this.fileName = this.fileInfo.name;
     }
   }
 

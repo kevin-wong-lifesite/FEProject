@@ -43,6 +43,12 @@ export class BoardUserComponent implements OnInit {
     })
   }
 
+  handleDelete($event) {
+    this.fileList = this.fileList.filter(f => {
+      return f.id !== $event
+    })
+  }
+
   onScrollDown(ev) {
     //fetch more files
     this.appendFiles();

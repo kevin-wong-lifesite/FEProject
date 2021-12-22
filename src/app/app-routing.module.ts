@@ -10,17 +10,19 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { AuthGuard } from './auth.guard';
+import { LoggedOutComponent } from './logged-out/logged-out.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
+  { path: 'logged-out', component: LoggedOutComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
+  { path: 'user',canActivate: [AuthGuard], component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'upload', canActivate: [AuthGuard], component: UploadFileComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', canActivate: [AuthGuard], redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
