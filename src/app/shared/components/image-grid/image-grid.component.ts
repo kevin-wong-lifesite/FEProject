@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
-import { FileService, TokenStorageService } from '../../services';
+import { FileService } from '../../services/file.service';
+import { TokenStorageService } from '../../services/token-storage.service';
+import { GlobalConstant } from '../../../global-constants';
 
 @Component({
   selector: 'app-image-grid',
@@ -26,7 +28,7 @@ export class ImageGridComponent implements OnInit {
   ngOnInit() {
     //get the image
     if (this.fileInfo.id) {
-      let route = `http://localhost:6969/api/file/${this.fileInfo.id}/user/${TokenStorageService.userId}/image`
+      let route = `${GlobalConstant}/file/${this.fileInfo.id}/user/${TokenStorageService.userId}/image`
       this.http.get(route,{
         responseType: 'blob'
       }).pipe(map(image =>{

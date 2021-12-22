@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GlobalConstant } from '..';
 
-const API_URL = 'http://localhost:6969/api/test/';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +12,10 @@ export class UserService {
 
   //get the user with request
   getUser(): Observable<any> {
-    return this.http.get(API_URL + `user/find`)
-  }
-
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
-
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
-  }
-
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
+    return this.http.get(GlobalConstant + `user/find`)
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+    return this.http.get(GlobalConstant + 'admin', { responseType: 'text' });
   }
 }

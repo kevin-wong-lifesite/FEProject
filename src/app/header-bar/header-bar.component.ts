@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { getIsLoggedIn } from '../login/login.selectors';
 import { TokenStorageService } from '../shared/services/token-storage.service';
+import { HelperService } from '../shared/services';
 import { AppStore } from '../shared/store';
 import { getUserRoles, getUserState } from '../shared/user';
 
@@ -22,7 +23,7 @@ export class HeaderBarComponent implements OnInit {
   private subscriptions: any[] = [];
 
   constructor(private tokenStorageService: TokenStorageService,
-  private userService
+  private userService: HelperService,
   private store: Store<AppStore>
     ) { }
 

@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FileUploader } from 'ng2-file-upload';
+import { GlobalConstant } from '../shared';
 import { AppStore } from '../shared/store';
 import { getUserId } from '../shared/user';
 
@@ -44,7 +45,7 @@ export class UploadFileComponent implements OnInit,OnChanges {
 
   submitFiles(){
 
-    let fileUrl = `http://localhost:6969/api/file/user/${this.userId}`
+    let fileUrl = `${GlobalConstant}/file/user/${this.userId}`
     this.uploader.onBeforeUploadItem = (item) => {
       item.withCredentials = false;
     }
