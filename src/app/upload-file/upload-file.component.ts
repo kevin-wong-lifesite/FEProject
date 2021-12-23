@@ -45,7 +45,7 @@ export class UploadFileComponent implements OnInit,OnChanges {
 
   submitFiles(){
 
-    let fileUrl = `${GlobalConstant}/file/user/${this.userId}`
+    let fileUrl = `${GlobalConstant.apiURL}/file/user/${this.userId}`
     this.uploader.onBeforeUploadItem = (item) => {
       item.withCredentials = false;
     }

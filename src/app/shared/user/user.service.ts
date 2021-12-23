@@ -12,10 +12,10 @@ export class UserService {
 
   //get the user with request
   getUser(): Observable<any> {
-    return this.http.get(GlobalConstant + `user/find`)
+    return this.http.get(GlobalConstant.apiURL + `/user/find`)
   }
 
   getAdminBoard(): Observable<any> {
-    return this.http.get(GlobalConstant + 'admin', { responseType: 'text' });
+    return this.http.get(GlobalConstant.apiURL + '/admin', { responseType: 'text' });
   }
 }

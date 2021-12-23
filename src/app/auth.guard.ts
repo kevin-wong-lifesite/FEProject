@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
         state: RouterStateSnapshot
     ): Observable<boolean> | boolean {
         let unauthorized = () => {
-            this.router.navigateByUrl("logged-out");
+            this.router.navigateByUrl("");
             return observableOf(false);
         };
         return this.store.pipe(

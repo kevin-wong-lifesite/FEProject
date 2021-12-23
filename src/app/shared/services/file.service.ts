@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { GlobalConstant } from '../../global-constants';
 
-const FILE_API = `${GlobalConstant}/file/`;
+const FILE_API = `${GlobalConstant.apiURL}/file/`;
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

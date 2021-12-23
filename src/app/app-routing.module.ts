@@ -14,7 +14,6 @@ import { LoggedOutComponent } from './logged-out/logged-out.component';
 
 const routes: Routes = [
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
-  { path: 'logged-out', component: LoggedOutComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
@@ -22,7 +21,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'upload', canActivate: [AuthGuard], component: UploadFileComponent},
-  { path: '', canActivate: [AuthGuard], redirectTo: 'home', pathMatch: 'full' }
+  { path: '', component: LoggedOutComponent }
 ];
 
 @NgModule({

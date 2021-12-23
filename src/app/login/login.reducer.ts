@@ -16,7 +16,6 @@ export function loginPageReducer(
 ): LoginPageState {
     switch(action.type) {
         case LoginActionTypes.LOGIN_SUCCESS: {
-            console.log("DFSDF?")
             return Object.assign({}, state, {
                 loggedIn: true
             })

@@ -27,7 +27,7 @@ export class PublicImageGridComponent implements OnInit {
   ngOnInit() {
     //get the image
     if (this.fileInfo.id) {
-      let route = `${GlobalConstant}/file/${this.fileInfo.id}/user/${TokenStorageService.userId}/image`
+      let route = `${GlobalConstant.apiURL}/file/${this.fileInfo.id}/user/${TokenStorageService.userId}/image`
       this.http.get(route,{
         responseType: 'blob'
       }).pipe(map(image =>{
