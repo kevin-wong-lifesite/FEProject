@@ -18,7 +18,8 @@ export class HeaderBarComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   searchControlForm = new FormControl();
-  searchOptions = [];
+  searchOptions:any = [];
+  usersSearched: any = [];
   username?: string;
   private subscriptions: any[] = [];
 
@@ -56,8 +57,19 @@ export class HeaderBarComponent implements OnInit {
   onChanges() {
     this.searchControlForm.valueChanges.subscribe(search => {
       //on value change do a lookup to see if user matches
-
+      this.userService.searchUsers(search).subscribe(results => {
+        this.usersSearched = results;
+        this.searchOptions = this.usersSearched.map( r => {
+          return r.username
+        })
+      });
     })
+  }
+
+  //navigate to the selected user from the dropdown
+  handleSelectedSearch($event) {
+    let selectedUser = $event.option.value
+    console.log($event.option.value);
   }
 
   logout(): void {

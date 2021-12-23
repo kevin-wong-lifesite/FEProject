@@ -10,7 +10,6 @@ export class HelperService {
     constructor(private http: HttpClient) { }
 
     searchUsers(input: string) {
-      console.log(input)
       return this.http.get(GlobalConstant.apiURL + `/user/search?input=${input}`);
     }
 }

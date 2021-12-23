@@ -21,21 +21,20 @@
 
       <form class="example-form">
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Number</mat-label>
+          <mat-label>User Search</mat-label>
           <input type="text"
                  placeholder="Pick one"
                  aria-label="Number"
                  matInput
                  [formControl]="searchControlForm"
                  [matAutocomplete]="auto">
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)=handleSelectedSearch($event)>
+            <mat-option *ngFor="let option of searchOptions" [value]="option">
               {{option}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
       </form>
-
       <ul class="navbar-nav ml-auto login-stat" >
         <li class="nav-item">
           <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
